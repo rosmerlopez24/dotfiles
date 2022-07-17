@@ -2,7 +2,7 @@
 
 This repository contains my personal dotfiles, since I decided to switch to Arch Linux I haven't stopped learning things and I hope you like it.
 
-<img src="https://github.com/rosmerlopez24/dotfiles/blob/52f2392ceaabef53aa0241723e1a13e6b87c056b/.screenshots/bspwm_1.png" alt="img" align="right" width="550px">
+<img src="https://github.com/rosmerlopez24/dotfiles/blob/52f2392ceaabef53aa0241723e1a13e6b87c056b/.screenshots/bspwm_1.png" alt="img" align="right" width="500px">
 
 Here are some details about my setup:
 
