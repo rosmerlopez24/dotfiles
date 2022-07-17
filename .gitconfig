@@ -1,0 +1,11 @@
+[user]
+	name = Rosmer Lopez
+	email = rosmerlopezacasio62@gmail.com
+[init]
+	defaultBranch = main
+[credential]
+	helper = store
+[core]
+	editor = nvim
+[pull]
+	rebase = false

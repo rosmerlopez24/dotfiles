@@ -1,0 +1,10 @@
+# Enviroment variables
+export RANGER_DEVICONS_SEPARATOR="  "
+export PATH="${PATH}:$HOME/.local/bin/"
+export VISUAL=nvim
+export EDITOR=nano
+
+# Execution commands
+picom -bf &
+thunar --daemon &
+xsettingsd &
