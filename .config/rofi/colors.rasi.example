@@ -1,0 +1,8 @@
+* {
+  background: #1E222A;
+  foreground: #abb2bf;
+  color-blue: #61afef;
+  color-red: #e86671;
+  color-green: #98c379;
+  color-black: #181a1f;
+}
