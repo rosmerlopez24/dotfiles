@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+#
+# Apply themes in bspwm and gtk apps
+#
+# Rosmer Lopez
+# https://github.com/rosmerlopez24/dotfiles
+#
+
+DIR_CONFIG=$HOME/.config
+DIR_XRESOURCES=$HOME/.Xresources.d
+DIR_THEMES=$HOME/.bspcolors/colorschemes
+DIR_BACKGROUNDS=$HOME/.bspcolors/backgrounds
+
+### Set gtk theme ----------------------------------#
+function set_gtk_theme() {
+  if [[ $(pidof xsettingsd) ]]; then
+    sed -i -e "s|Net/ThemeName .*|Net/ThemeName \"${1}\"|g" "$HOME"/.xsettingsd
+    sed -i -e "s|Net/IconThemeName .*|Net/IconThemeName \"${2}\"|g" "$HOME"/.xsettingsd
+    
+    # Reload xsettingsd daemon
+    killall -HUP xsettingsd
+  fi
+  
+  sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=\"${1}\"/g" "${HOME}"/.gtkrc-2.0
+  sed -i -e "s/gtk-icon-theme-name=.*/gtk-icon-theme-name=\"${2}\"/g" "${HOME}"/.gtkrc-2.0
+  sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=""${1}""/g" "${DIR_CONFIG}"/gtk-3.0/settings.ini
+  sed -i -e "s/gtk-icon-theme-name=.*/gtk-icon-theme-name=""${2}""/g" "${DIR_CONFIG}"/gtk-3.0/settings.ini
+}
+
+### Set Style --------------------------------------#
+function set_style() {
+  # Apply wallpaper
+  if [[ -e $DIR_BACKGROUNDS/${1}".jpg" ]]; then
+    feh --bg-fill "$DIR_BACKGROUNDS"/"${1}"".jpg"
+  elif [[ -e $DIR_BACKGROUNDS/${1}".png" ]]; then
+    feh --bg-fill "$DIR_BACKGROUNDS"/"${1}"".png"
+  fi 
+  
+  # Apply colors
+  cat "$DIR_THEMES"/"${1}" > "$DIR_XRESOURCES"/colors
+  
+  if [[ ${1} == "material-ocean" ]]; then
+    papirus-folders -D --theme Papirus-Dark &> /dev/null
+    set_gtk_theme "Materia-dark-compact" "Papirus-Dark"
+  elif [[ ${1} == "onedark" ]]; then
+    set_gtk_theme "Onedark" "Luv"
+  elif [[ ${1} == "nord" ]]; then
+    set_gtk_theme "Nordic-darker" "Zafiro"
+  elif [[ ${1} == "catppuccin-mocha" ]]; then
+    papirus-folders -C cat-mocha-blue --theme Papirus-Dark &> /dev/null
+    set_gtk_theme "Catppuccin-pink" "Papirus-Dark"
+  fi
+  
+  # Reload config
+  bspc wm -r
+}
+
+function main() {
+  if [[ -e "$DIR_THEMES"/"${1}" ]]; then
+    set_style "${1}"
+  else
+    echo "${1}: No such file or directory"
+  fi
+}
+
+main "${1}"

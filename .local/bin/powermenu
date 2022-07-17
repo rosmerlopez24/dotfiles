@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+#
+# Rofi power menu
+#
+# Rosmer Lopez
+# https://github.com/rosmerlopez24/dotfiles
+#
+
+# Command to execute
+rofi_command="rofi -theme ~/.config/rofi/powermenu.rasi"
+
+# System up time
+uptime=$(uptime -p | sed -e 's/up //g')
+
+# Available options
+shutdown=""
+reboot=""
+lock=""
+suspend="鈴"
+logout=""
+
+# Variable of all options
+options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
+
+# Store option chosen
+option_chosen="$(echo -e "$options" | $rofi_command -p "祥 System: Up - $uptime" -dmenu)"
+
+# Run according to the chosen option
+case "$option_chosen" in
+  "$shutdown")
+    systemctl poweroff
+    ;;
+  "$reboot")
+    systemctl reboot
+    ;;
+  "$lock")
+    sleep 1
+    dm-tool lock
+    ;;
+  "$suspend")
+    sleep 
+    systemctl suspend
+    ;;
+  "$logout")
+    bspc quit
+    ;;
+esac

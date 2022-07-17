@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+SYSTEM_FILE="$HOME/.config/polybar/system.ini"
+
+# Get active network interface
+get_values() {
+  INTERFACE=$(ip link | awk '/state UP/ {print $2}' | tr -d :)
+}
+
+# Set active network interface
+set_values() {
+  if [[ "$INTERFACE" ]]; then
+    sed -i -e "s/network_interface = .*/network_interface = $INTERFACE/g" "${SYSTEM_FILE}"
+  fi
+}
+
+get_values
+set_values

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+# Rofi apps launcher
+#
+# Rosmer Lopez
+# https://github.com/rosmerlopez24/dotfiles
+#
+
+rofi -show drun -theme ~/.config/rofi/launcher.rasi

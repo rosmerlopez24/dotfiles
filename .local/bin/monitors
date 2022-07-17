@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+MONITOR_VGA1=$(xrandr -q | grep ' connected' | grep 'VGA1' | awk '{print $1}')
+  
+if [ "$MONITOR_VGA1" == "VGA1" ]; then
+  xrandr --output LVDS1 --primary --mode 1024x600 --rotate normal --output VGA1 --mode 1360x768 --rotate normal --right-of LVDS1
+else
+  xrandr --output LVDS1 --primary --mode 1024x600 --rotate normal --output VGA1 --off --output VIRTUAL1 --off
+fi

@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+
+## Get colors from .Xresources -----#
+BACKGROUND=$(xgetres 'background')
+FOREGROUND=$(xgetres 'foreground')
+BLACK=$(xgetres 'color0')
+RED=$(xgetres 'color1')
+GREEN=$(xgetres 'color2')
+YELLOW=$(xgetres 'color3')
+BLUE=$(xgetres 'color4')
+MAGENTA=$(xgetres 'color5')
+CYAN=$(xgetres 'color6')
+WHITE=$(xgetres 'color7')
+ALTBLACK=$(xgetres 'color8')
+ALTRED=$(xgetres 'color9')
+ALTGREEN=$(xgetres 'color10')
+ALTYELLOW=$(xgetres 'color11')
+ALTBLUE=$(xgetres 'color12')
+ALTMAGENTA=$(xgetres 'color13')
+ALTCYAN=$(xgetres 'color14')
+ALTWHITE=$(xgetres 'color15')
+#-----------------------------------#
+
+### Set colors for alacritty ----------------------------------------#
+function set_colors_alacritty() {
+	cat > ~/.config/alacritty/colors.yml <<- _EOF_
+		## Colors configuration
+		colors:
+		  # Default colors
+		  primary:
+		    background: '${BACKGROUND}'
+		    foreground: '${FOREGROUND}'
+
+		  # Normal colors
+		  normal:
+		    black:   '${BLACK}'
+		    red:     '${RED}'
+		    green:   '${GREEN}'
+		    yellow:  '${YELLOW}'
+		    blue:    '${BLUE}'
+		    magenta: '${MAGENTA}'
+		    cyan:    '${CYAN}'
+		    white:   '${WHITE}'
+
+		  # Bright colors
+		  bright:
+		    black:   '${ALTBLACK}'
+		    red:     '${ALTRED}'
+		    green:   '${ALTGREEN}'
+		    yellow:  '${ALTYELLOW}'
+		    blue:    '${ALTBLUE}'
+		    magenta: '${ALTMAGENTA}'
+		    cyan:    '${ALTCYAN}'
+		    white:   '${ALTWHITE}'
+	_EOF_
+}
+
+### Set colors for rofi --------------------------------------------#
+function set_colors_rofi() {
+	cat > ~/.config/rofi/colors.rasi <<- _EOF_	
+* {
+  background: ${BACKGROUND};
+  foreground: ${FOREGROUND};
+  color-blue: ${BLUE};
+  color-red: ${RED};
+  color-green: ${GREEN};
+  color-black: ${BLACK};
+}
+	_EOF_
+}
+
+### Set colors for kitty -------------------------------------------#
+function set_colors_kitty() {
+  cat > ~/.config/kitty/colors.conf <<- _EOF_
+# The basic colors
+foreground              ${FOREGROUND}
+background              ${BACKGROUND}
+selection_foreground    ${BACKGROUND}
+selection_background    ${FOREGROUND}
+
+# Tab bar colors
+active_tab_foreground   ${BACKGROUND}
+active_tab_background   ${GREEN}
+inactive_tab_foreground ${BACKGROUND}
+inactive_tab_background ${RED}
+tab_bar_background      ${BACKGROUND}
+
+# The 16 terminal colors
+
+# black
+color0 ${BLACK}
+color8 ${ALTBLACK}
+
+# red
+color1 ${RED}
+color9 ${ALTRED}
+
+# green
+color2  ${GREEN}
+color10 ${ALTGREEN}
+
+# yellow
+color3  ${YELLOW}
+color11 ${ALTYELLOW}
+
+# blue
+color4  ${BLUE}
+color12 ${ALTBLUE}
+
+# magenta
+color5  ${MAGENTA}
+color13 ${ALTMAGENTA}
+
+# cyan
+color6  ${CYAN}
+color14 ${ALTCYAN}
+
+# white
+color7  ${WHITE}
+color15 ${ALTWHITE}
+_EOF_
+}
+
+set_colors_alacritty
+set_colors_kitty
+set_colors_rofi
