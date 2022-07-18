@@ -6,7 +6,6 @@
 !.config/
 !.screenshots/
 !.local/
-!.bspcolors/
 !.bashrc
 !.xprofile
 !.zpreztorc
