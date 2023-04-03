@@ -1,0 +1,43 @@
+#!/bin/bash
+
+## Rofi - Power Menu
+## Rosmer Lopez <rosmerlopez99@gmail.com>
+
+shutdown=""
+reboot=""
+lock=""
+suspend="󰤄"
+logout=""
+
+PROMPT="祥 System: Up - $(uptime -p | sed 's/up //g')"
+RASI="${HOME}/.config/rofi/powermenu.rasi"
+
+rofi_cmd() {
+  rofi -dmenu -p "${PROMPT}" -markup-rows -theme "${RASI}"
+}
+
+run_rofi() {
+  echo -e "${shutdown}\n${reboot}\n${lock}\n${suspend}\n${logout}" | rofi_cmd
+}
+
+# Actions
+chosen="$(run_rofi)"
+case "${chosen}" in
+"${shutdown}")
+  systemctl poweroff
+  ;;
+"${reboot}")
+  systemctl reboot
+  ;;
+"${lock}")
+  sleep 1
+  dm-tool lock
+  ;;
+"${suspend}")
+  sleep
+  systemctl suspend
+  ;;
+"${logout}")
+  bspc quit
+  ;;
+esac

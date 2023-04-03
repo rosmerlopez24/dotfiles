@@ -1,0 +1,6 @@
+#!/bin/bash
+
+## Start status bar (Polybar)
+## Rosmer Lopez <rosmerlopez99@gmail.com>
+
+bash "${HOME}/.config/polybar/launch.sh"
