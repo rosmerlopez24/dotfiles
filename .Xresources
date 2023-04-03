@@ -4,4 +4,4 @@
 ! https://github.com/rosmerlopez24/dotfiles
 ! -----------------------------------------
 
-#include ".Xresources.d/colors"
+#include ".Xresources.d/colors.Xresources"
