@@ -7,6 +7,7 @@
 !.screenshots/
 !.local/
 !.themes/
+!.icons
 !.bashrc
 !.xprofile
 !.zpreztorc
@@ -15,3 +16,5 @@
 !.Xresources
 !.xprofile
 !README.md
+!pkglist.txt
+!pkglist_aur.txt
