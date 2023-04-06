@@ -1,0 +1,10 @@
+catppuccin-gtk-theme-mocha
+gitflow-avh
+nordic-darker-theme-git
+ookla-speedtest-bin
+pipes.sh
+qogir-icon-theme
+tty-clock-git
+winbox
+yay-bin
+zafiro-icon-theme
