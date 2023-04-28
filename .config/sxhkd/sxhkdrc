@@ -8,9 +8,6 @@
 ##---------- Keybindings for bspwm ----------##
 
 # Terminal emulator
-alt + Return
-  alacritty
-
 super + Return
   kitty
 
