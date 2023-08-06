@@ -1,9 +1,11 @@
+adguardhome-bin
 catppuccin-gtk-theme-mocha
 gitflow-avh
 nordic-darker-theme-git
 ookla-speedtest-bin
 pipes.sh
 qogir-icon-theme
+ttf-comic-mono-git
 tty-clock-git
 winbox
 yay-bin
