@@ -31,7 +31,7 @@ mpd_port = 6600
 #
 ## Needed for tag editor and file operations to work.
 ##
-mpd_music_dir = ~/Rosmer/Musica
+mpd_music_dir = ~/RL-Data-Vault/Musica
 #
 mpd_crossfade_time = 5
 #
