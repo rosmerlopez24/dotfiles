@@ -64,6 +64,8 @@ apply_style() {
     apply_all "${1}" "Catppuccin-Mocha-Standard-Blue-Dark" "Papirus-Dark"
   elif [[ "${1}" == "tokyonight-storm" ]]; then
     apply_all "${1}" "Tokyonight-Storm" "Tokyonight-Moon"
+  elif [[ "${1}" == "bluloco-dark" ]]; then
+    apply_all "${1}" "Materia-dark-compact" "Papirus-Dark"
   fi
 
   bspc wm -r # Reload bspwm config
