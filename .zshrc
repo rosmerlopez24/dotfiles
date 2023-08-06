@@ -16,10 +16,11 @@ alias ls='exa --group-directories-first --header --icons --git'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mirrorlist='sudo reflector \
   --verbose \
-  --latest 20 \
+  --latest 30 \
   --country US \
   --connection-timeout 5 \
   --download-timeout 30 \
+  --protocol http \
   --protocol https \
   --sort rate \
   --save /etc/pacman.d/mirrorlist'
