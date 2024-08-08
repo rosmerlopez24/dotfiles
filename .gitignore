@@ -1,0 +1,20 @@
+# Ignore everything
+/*
+!.gitignore
+
+# Except for the files and folders we want to track
+!.config/
+!.screenshots/
+!.local/
+!.themes/
+!.icons
+!.bashrc
+!.xprofile
+!.zpreztorc
+!.zshrc
+!.gitconfig
+!.Xresources
+!.xprofile
+!README.md
+!pkglist.txt
+!pkglist_aur.txt

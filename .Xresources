@@ -1,0 +1,7 @@
+! -----------------------------------------
+! Load resources for clients X
+! Rosmer Lopez
+! https://github.com/rosmerlopez24/dotfiles
+! -----------------------------------------
+
+#include ".Xresources.d/colors.Xresources"
