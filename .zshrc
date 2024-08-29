@@ -12,10 +12,10 @@ alias ip='ip --color=auto'
 alias mpc='mpc --host=localhost --port=6600'
 alias tree="exa --group-directories-first --tree --icons"
 alias ls='exa --group-directories-first --header --icons --git'
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mirrorlist='sudo reflector \
   --verbose \
-  --latest 20 \
+  --latest 30 \
   --connection-timeout 5 \
   --download-timeout 10 \
   --protocol http,https \
