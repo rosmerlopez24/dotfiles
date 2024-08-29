@@ -1,0 +1,14 @@
+#!/bin/bash
+
+##
+## Configure external monitor for current setup
+## Rosmer Lopez <rosmerlopez99@gmail.com>
+##
+
+MONITOR=$(xrandr -q | grep ' connected' | grep 'VGA1' | awk '{print $1}')
+
+if [ "${MONITOR}" == "VGA1" ]; then
+  xrandr --output LVDS1 --primary --mode 1024x600 --rotate normal --output VGA1 --mode 1360x768 --rotate normal --right-of LVDS1
+else
+  xrandr --output LVDS1 --primary --mode 1024x600 --rotate normal --output VGA1 --off --output VIRTUAL1 --off
+fi
