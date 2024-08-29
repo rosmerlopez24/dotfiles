@@ -1,0 +1,73 @@
+@import "colors.rasi"
+
+* {
+  background-color: @background;
+  border-radius: 10px;
+}
+
+window {
+  padding: 10px;
+  margin: 0px;
+  width: 440px;
+  location: center;
+  anchor: center;
+  x-offset: 0;
+  y-offset: 0;
+}
+
+mainbox {
+  padding: 0px;
+  margin: 0px;
+  spacing: 10px;
+  children: [inputbar, listview];
+}
+
+inputbar {
+  padding: 0px;
+  margin: 0px;
+  border: 1px;
+  spacing: 0px;
+  vertical-align: 0;
+  horizontal-align: 0;
+	children: [prompt];
+}
+
+prompt {
+  padding: 6px 11px 6px 12px;
+  margin: 0px;
+  background-color: @color-red;
+  text-color: @background;
+  font: "UbuntuMono Nerd Font 12";
+}
+
+listview {
+  columns: 1;
+  lines: 5;
+  spacing: 6px;
+  cycle: true;
+  dynamic: true;
+  layout: horizontal;
+}
+
+element {
+  font: "Symbols Nerd Font Mono 14";
+  background-color: @color-blue;
+  text-color: @background;
+  orientation: horizontal;
+  padding: 20px 30px 20px 30px;
+}
+
+element-text {
+  background-color: inherit;
+  text-color: inherit;
+  font: inherit;
+  expand: false;
+  horizontal-align: 0.5;
+  vertical-align: 0.5;
+  margin: 0px;
+}
+
+element selected {
+  background-color: @color-green;
+  text-color: @background;
+}

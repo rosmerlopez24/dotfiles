@@ -1,0 +1,149 @@
+configuration {
+  modi: "window,run,ssh,drun";
+  font: "UbuntuMono Nerd Font 12";
+  location: 0;
+  yoffset: 0;
+  xoffset: 0;
+  fixed-num-lines: true;
+  show-icons: true;
+  icon-theme: "Papirus-Dark";
+  sidebar-mode: true;
+  scroll-method: 1;
+  window-format: "{w}    {c}   {t}";
+  click-to-exit: false;
+  display-window: "  Windows";
+  display-run: "  Run";
+  display-ssh: "  Ssh";
+  display-drun: "  Apps";
+  display-combi: "  Combi";
+}
+
+@import "colors.rasi"
+
+* {
+  background-color: @background;
+}
+
+window {
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0px;
+  border: 0px;
+  width: 600px;
+}
+
+mainbox {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  spacing: 12px;
+}
+
+inputbar {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  spacing: 0px;
+  text-color: @foreground;
+  children: [prompt,entry];
+  border-radius: 10px;
+}
+
+prompt {
+  padding: 8px 11px 8px 12px;
+  margin: 0px;
+  border: 0px;
+  background-color: @color-red;
+  text-color: @background;
+}
+
+entry {
+  padding: 8px 8px 8px 8px;
+  margin: 0px;
+  border: 0px;
+  spacing: 0px;
+  vertical-align: 0;
+  horizontal-align: 0;
+  background-color: @color-black;
+  text-color: @foreground;
+}
+
+listview {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  columns: 2;
+  fixed-height: true;
+  scrollbar: false;
+  spacing: 0px;
+  lines: 10;
+}
+
+element-text, element-icon {
+  background-color: inherit;
+  text-color: inherit;
+}
+
+element {
+  padding: 8px;
+  spacing: 4px;
+  border-radius: 10px;
+}
+element normal.normal {
+  background-color: @background;
+  text-color: @foreground;
+}
+element normal.urgent {
+  background-color: @color-red;
+  text-color: @background;
+}
+element normal.active {
+  background-color: @color-green;
+  text-color: @background;
+}
+element selected.normal {
+  background-color: @color-blue;
+  text-color: @background;
+}
+element selected.urgent {
+  background-color: @background;
+  text-color: @color-red;
+}
+element selected.active {
+  background-color: @color-blue;
+  text-color: @background;
+}
+element alternate.normal {
+  background-color: @background;
+  text-color: @foreground;
+}
+element alternate.urgent {
+  background-color: @background;
+  text-color: @foreground;
+}
+element alternate.active {
+  background-color: @background;
+  text-color: @foreground;
+}
+
+mode-switcher {
+  padding: 0px;
+  margin: 0px;
+  spacing: 10px;
+}
+
+button {
+  padding: 10px;
+  margin: 0px;
+  border: 0px;
+  border-radius: 10px;
+  background-color: @color-red;
+  vertical-align: 0.5;
+  horizontal-align: 0.5;
+  text-color: @background;
+}
+
+button selected {
+  background-color: @color-green;
+  text-color: @background;
+}

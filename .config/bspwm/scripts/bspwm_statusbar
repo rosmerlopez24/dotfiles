@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+## Start status bar (Polybar)
+## Rosmer Lopez <rosmerlopez99@gmail.com>
+
+# Fix padding
+bspc config bottom_padding 0
+bspc config top_padding 0
+
+# Start polybar
+bash "${HOME}/.config/polybar/launch.sh"

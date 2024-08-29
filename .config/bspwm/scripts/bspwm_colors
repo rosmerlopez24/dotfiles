@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+## Set colors from Xresources
+## Rosmer Lopez <rosmerlopez99@gmail.com>
+
+ROFI_FILE_COLORS="${HOME}/.config/bspwm/themes/rofi/colors.rasi"
+
+## Get colors from .Xresources
+BACKGROUND=$(xgetres "background")
+FOREGROUND=$(xgetres "foreground")
+BLACK=$(xgetres "color0")
+RED=$(xgetres "color1")
+GREEN=$(xgetres "color2")
+BLUE=$(xgetres "color4")
+
+## Set colors for rofi
+function set_colors_rofi() {
+  cat >"${ROFI_FILE_COLORS}" <<-_EOF_
+* {
+  background: ${BACKGROUND};
+  foreground: ${FOREGROUND};
+  color-blue: ${BLUE};
+  color-red: ${RED};
+  color-green: ${GREEN};
+  color-black: ${BLACK};
+}
+	_EOF_
+}
+
+set_colors_rofi

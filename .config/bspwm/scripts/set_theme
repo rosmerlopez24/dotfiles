@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+## Script to set style for Bspwm
+## Rosmer Lopez <rosmerlopez99@gmail.com>
+
+## Directorys -----------------------------------
+DIR_CONFIG="${HOME}/.config"
+DIR_BSPWM="${DIR_CONFIG}/bspwm"
+DIR_XRESOURCES="${HOME}/.Xresources.d"
+
+TERMINAL="${DIR_BSPWM}/themes/kitty"
+XRESOURCES="${DIR_BSPWM}/themes/xresources"
+WALLPAPER="${DIR_BSPWM}/themes/wallpaper"
+
+## Wallpaper ------------------------------------
+apply_wallpaper() {
+  if [[ -e "${WALLPAPER}/${1}.jpg" ]]; then
+    feh --bg-fill "${WALLPAPER}/${1}.jpg"
+  elif [[ -e "${WALLPAPER}/${1}.png" ]]; then
+    feh --bg-fill "${WALLPAPER}/${1}.png"
+  fi
+}
+
+# Terminal --------------------------------------
+apply_terminal() {
+  cp "${TERMINAL}/${1}.conf" "${DIR_CONFIG}/kitty/colors.conf"
+}
+
+# Xresources ------------------------------------
+apply_xresources() {
+  cp "${XRESOURCES}/${1}.Xresources" "${DIR_XRESOURCES}/colors.Xresources"
+}
+
+# Appearance ------------------------------------
+apply_appearance() {
+  if [[ $(pidof xsettingsd) ]]; then
+    sed -i -e "s|Net/ThemeName .*|Net/ThemeName \"${1}\"|g" "${DIR_BSPWM}/xsettingsd"
+    sed -i -e "s|Net/IconThemeName .*|Net/IconThemeName \"${2}\"|g" "${DIR_BSPWM}/xsettingsd"
+  fi
+
+  sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=\"${1}\"/g" "${HOME}/.gtkrc-2.0"
+  sed -i -e "s/gtk-icon-theme-name=.*/gtk-icon-theme-name=\"${2}\"/g" "${HOME}/.gtkrc-2.0"
+  sed -i -e "s/gtk-theme-name=.*/gtk-theme-name=""${1}""/g" "${DIR_CONFIG}/gtk-3.0/settings.ini"
+  sed -i -e "s/gtk-icon-theme-name=.*/gtk-icon-theme-name=""${2}""/g" "${DIR_CONFIG}/gtk-3.0/settings.ini"
+}
+
+# Actions ---------------------------------------
+apply_all() {
+  apply_xresources "${1}"
+  apply_wallpaper "${1}"
+  apply_terminal "${1}"
+  apply_appearance "${2}" "${3}"
+}
+
+# Choose theme ----------------------------------
+apply_style() {
+  if [[ "${1}" == "material_deep_ocean" ]]; then
+    apply_all "${1}" "Materia-dark-compact" "Papirus-Dark"
+  elif [[ "${1}" == "onedark" ]]; then
+    apply_all "${1}" "Arc-Dark" "Qogir-dark"
+  elif [[ "${1}" == "nord" ]]; then
+    apply_all "${1}" "Nordic-darker" "zafiro-dark"
+  elif [[ "${1}" == "catppuccin_mocha" ]]; then
+    apply_all "${1}" "Materia-dark-compact" "Papirus-Dark"
+  elif [[ "${1}" == "tokyonight_storm" ]]; then
+    apply_all "${1}" "Materia-dark-compact" "Papirus-Dark"
+  elif [[ "${1}" == "bluloco_dark" ]]; then
+    apply_all "${1}" "Materia-dark-compact" "Papirus-Dark"
+  elif [[ "${1}" == "rose_pine" ]]; then
+    apply_all "${1}" "Materia-dark-compact" "Papirus-Dark"
+  fi
+
+  bspc wm -r # Reload bspwm config
+}
+
+# Run script ------------------------------------
+if [[ -e "${XRESOURCES}/${1}.Xresources" ]]; then
+  apply_style "${1}"
+else
+  echo -e "${1}: No such file or directory"
+fi

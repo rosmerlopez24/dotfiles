@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+## Rofi - Apps Launcher
+## Rosmer Lopez <rosmerlopez99@gmail.com>
+
+# File Launcher Config
+RASI="${HOME}/.config/bspwm/themes/rofi/launcher.rasi"
+
+# Command to execute
+rofi -show drun -theme "${RASI}"

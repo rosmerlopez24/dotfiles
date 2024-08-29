@@ -1,0 +1,147 @@
+# A customized sxhkdrc for the bspwm window manager.
+# https://github.com/baskerville/sxhkd
+#
+# Rosmer Lopez
+# https://github.com/rosmerlopez24/dotfiles
+#
+
+##---------- Keybindings for bspwm ----------##
+
+# Terminal emulator
+super + Return
+  kitty
+
+##---------- Rofi Launcher & Menus ----------##
+
+# Rofi Apps Launcher
+super + m
+  rofi_launcher
+
+# Rofi Power Menu
+super + p
+  rofi_powermenu
+
+##---------- Applications ----------##
+
+# Launch Apps
+super + {e,n}
+  {thunar,firefox}
+
+# Redshift
+super + {r,shift + r}
+  {redshift -O 2400, redshift -x}
+
+##---------- System Keys ----------##
+
+# Take a screenshot
+Print
+  bspwm_screenshot --now
+
+# Take screenshot of active window
+ctrl + Print
+  bspwm_screenshot --win
+
+# Take screenshot of area
+ctrl + alt + Print
+  bspwm_screenshot --area
+
+# Brightness control
+XF86MonBrightness{Up,Down}
+  xbacklight {-inc 5, -dec 5}
+
+# Volume control
+XF86Audio{LowerVolume,RaiseVolume}
+  pactl set-sink-volume @DEFAULT_SINK@ {-2%,+2%}
+
+XF86AudioMute
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+##---------- Bspwm hotkeys ----------##
+
+# Make sxhkd reload its configuration files
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# Quit/Restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# Close and Kill
+super + {_,shift + }w
+	bspc node -{c,k}
+
+# Alternate between the tiled and monocle layout
+super + shift + m
+	bspc desktop -l next
+
+##---------- State/Flags ----------##
+
+# Set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# Set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+##---------- Focus/Swap ----------##
+
+# Focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# Focus the next/previous window in the current desktop
+super + {_,shift + }c
+	bspc node -f {next,prev}.local.!hidden.window
+
+# Focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# Focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# Focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# Focus in the next monitor
+super + period
+  bspc monitor $(bspc query -M -m '.!focused') -f next
+
+# Move or send node to next monitor
+super + shift + {comma,period}
+  bspc node -m {prev,next} --follow
+
+##---------- Preselect ----------##
+
+# Preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# Preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# Cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# Cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+##---------- Move/Resize ----------##
+
+# Expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# Contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# Move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
