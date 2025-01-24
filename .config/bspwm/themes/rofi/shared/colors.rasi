@@ -1,0 +1,12 @@
+* {
+  background: #2e3440;
+  foreground: #d8dee9;
+  color-black: #3b4252;
+  color-red: #bf616a;
+  color-green: #a3be8c;
+  color-yellow: #ebcb8b;
+  color-blue: #5e81ac;
+  color-magenta: #b48ead;
+  color-cyan: #88c0d0;
+  color-white: #eceff4;
+}
