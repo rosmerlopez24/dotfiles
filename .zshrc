@@ -16,6 +16,7 @@ alias dotfiles='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias mirrorlist='sudo reflector \
   --verbose \
   --latest 30 \
+  --country US \
   --connection-timeout 5 \
   --download-timeout 10 \
   --protocol http,https \
