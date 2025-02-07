@@ -4,17 +4,21 @@
 # Inserts a blank line between shell prompts
 add_newline = false
 
+[character]
+success_symbol = '[](bold green)'
+error_symbol = '[](bold red)'
+
 [username]
 style_user = 'blue bold'
 style_root = 'red bold'
-format = '\[[$user]($style)@'
+format = '[$user]($style)@'
 disabled = false
 show_always = true
 
 [hostname]
 ssh_only = false
 ssh_symbol = " "
-format = '[$hostname](bold green)\] '
+format = '[$hostname](bold green) '
 disabled = false
 
 [aws]
