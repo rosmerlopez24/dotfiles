@@ -6,6 +6,7 @@ fi
 eval "$(starship init zsh)"
 
 # Custom Alias ------------------------------------------------
+# alias nvim='nvim -n -i NONE -u NONE --noplugin -S ~/.config/nvim/init.lua'
 alias df='duf'
 alias cat='bat'
 alias ip='ip --color=auto'
