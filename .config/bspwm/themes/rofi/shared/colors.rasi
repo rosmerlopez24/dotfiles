@@ -1,12 +1,12 @@
 * {
-  background: #2e3440;
-  foreground: #d8dee9;
-  color-black: #3b4252;
-  color-red: #bf616a;
-  color-green: #a3be8c;
-  color-yellow: #ebcb8b;
-  color-blue: #5e81ac;
-  color-magenta: #b48ead;
-  color-cyan: #88c0d0;
-  color-white: #eceff4;
+  background: #0F111A;
+  foreground: #A6ACCD;
+  color-black: #3B3F51;
+  color-red: #F07178;
+  color-green: #C3E88D;
+  color-yellow: #FFCB6C;
+  color-blue: #82AAFF;
+  color-magenta: #C792EA;
+  color-cyan: #89DDFF;
+  color-white: #EEFFFF;
 }

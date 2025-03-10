@@ -3,7 +3,7 @@
 ## Set colors from Xresources
 ## Rosmer Lopez <rosmerlopez99@gmail.com>
 
-ROFI_FILE_COLORS="${HOME}/.config/bspwm/themes/rofi/colors.rasi"
+ROFI_FILE_COLORS="${HOME}/.config/bspwm/themes/rofi/shared/colors.rasi"
 
 ## Get colors from .Xresources
 BACKGROUND=$(xgetres "background")
@@ -11,7 +11,11 @@ FOREGROUND=$(xgetres "foreground")
 BLACK=$(xgetres "color0")
 RED=$(xgetres "color1")
 GREEN=$(xgetres "color2")
+YELLOW=$(xgetres "color3")
 BLUE=$(xgetres "color4")
+MAGENTA=$(xgetres "color5")
+CYAN=$(xgetres "color6")
+WHITE=$(xgetres "color7")
 
 ## Set colors for rofi
 function set_colors_rofi() {
@@ -19,10 +23,14 @@ function set_colors_rofi() {
 * {
   background: ${BACKGROUND};
   foreground: ${FOREGROUND};
-  color-blue: ${BLUE};
+  color-black: ${BLACK};
   color-red: ${RED};
   color-green: ${GREEN};
-  color-black: ${BLACK};
+  color-yellow: ${YELLOW};
+  color-blue: ${BLUE};
+  color-magenta: ${MAGENTA};
+  color-cyan: ${CYAN};
+  color-white: ${WHITE};
 }
 	_EOF_
 }

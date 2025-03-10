@@ -9,15 +9,16 @@ lock=""
 suspend="󰤄"
 logout=""
 
-PROMPT="  System Uptime: $(uptime -p | sed "s/up //g")"
-RASI="${HOME}/.config/bspwm/themes/rofi/powermenu.rasi"
+prompt="$(whoami)@$(hostnamectl hostname) ($(echo -n "$DESKTOP_SESSION"))"
+message="Uptime : $(uptime -p | sed "s/up //g")"
+theme_rasi="${HOME}/.config/bspwm/themes/rofi/powermenu.rasi"
 
 rofi_cmd() {
-  rofi -dmenu -p "${PROMPT}" -markup-rows -theme "${RASI}"
+  rofi -dmenu -p "${prompt}" -mesg "${message}" -markup-rows -theme "${theme_rasi}"
 }
 
 run_rofi() {
-  echo -e "${shutdown}\n${reboot}\n${lock}\n${suspend}\n${logout}" | rofi_cmd
+  echo -e "${lock}\n${logout}\n${suspend}\n${reboot}\n${shutdown}" | rofi_cmd
 }
 
 # Actions
