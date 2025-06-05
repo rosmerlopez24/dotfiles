@@ -104,7 +104,7 @@ zstyle ':prezto:module:completion:*:hosts' etc-host-ignores '0.0.0.0' '127.0.0.1
 #
 
 # Set the Pacman frontend.
-zstyle ':prezto:module:pacman' frontend ''
+zstyle ':prezto:module:pacman' frontend 'yay'
 
 #
 # Prompt
